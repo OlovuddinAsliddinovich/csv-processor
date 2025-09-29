@@ -20,6 +20,7 @@ def lambda_handler(event, context):
         out_rows.append(''.join(r))
     out_data = '\n'.join(out_rows).encode('utf-8')
     s3.put_object(Bucket=bucket, Key='output/clean.csv', Body=out_data)
+    print("Done")
     return {
         "rows": len(out_rows)
     }
